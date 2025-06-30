@@ -3,11 +3,15 @@
 // Essentials
 import React, { ReactNode, useState } from "react";
 import Link from "next/link";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { usePathname } from "next/navigation";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { NuqsAdapter } from "nuqs/adapters/next/app";
-import { cn } from "@/lib/utils"; // Optional: Tailwind merge utility
+
+// Components
 import { buttonVariants } from "@/components/ui/button";
+
+// Libs
+import { cn } from "@/lib/utils";
 
 interface PROPS {
     children: ReactNode;

@@ -1,12 +1,16 @@
 "use client";
 
+// Essentials
 import React, { Suspense } from "react";
 import { NextPage } from "next";
 import { useQueryState } from "nuqs";
 
+// Hooks
+import { useCharactersQuery } from "@/hooks/useCharacterQuery";
+
+// Components
 import FilterBar from "@/components/pages/filterBar";
 import Pagination from "@/components/pages/pagination";
-import { useCharactersQuery } from "@/hooks/useCharacterQuery";
 import Character from "@/components/pages/character";
 
 const CharactersList: React.FC = () => {
