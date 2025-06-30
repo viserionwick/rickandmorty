@@ -2,6 +2,7 @@
 
 // Essentials
 import Link from "next/link";
+import Image from "next/image";
 import clsx from "clsx";
 
 // Models
@@ -31,11 +32,13 @@ const Character: React.FC<PROPS> = ({
             )}
             href={"/characters/" + character.id}
         >
-            <img
+            <Image
                 src={character.image}
                 alt={character.name}
-                className="w-full h-48 object-cover"
-                loading="lazy"
+                fill
+                style={{ objectFit: "cover" }}
+                sizes="(max-width: 768px) 100vw, 25vw"
+                priority={false}
             />
 
             <div className="p-4 flex flex-col flex-grow">

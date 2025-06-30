@@ -2,6 +2,7 @@
 
 // Essentials
 import { NextPage } from "next";
+import Image from "next/image";
 
 // Models
 import { Character } from "@/models/character";
@@ -16,10 +17,13 @@ const CONTENT: NextPage<PROPS> = ({ character }) => {
             <h1 className="text-4xl font-bold mb-6">{character.name}</h1>
 
             <section className="flex flex-col md:flex-row gap-10">
-                <img
+                <Image
                     src={character.image}
                     alt={character.name}
-                    className="w-full max-w-sm rounded-lg shadow-lg object-cover"
+                    fill
+                    style={{ objectFit: "cover" }}
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    priority
                 />
                 <div className="flex flex-col justify-start space-y-4 text-lg">
                     <div>
