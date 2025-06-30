@@ -1,18 +1,15 @@
-"use client"
+"use client";
 
-// Essentials
+import React, { Suspense } from "react";
 import { NextPage } from "next";
 import { useQueryState } from "nuqs";
 
-// Components
 import FilterBar from "@/components/pages/filterBar";
 import Pagination from "@/components/pages/pagination";
-
-// Lib
 import { useCharactersQuery } from "@/hooks/useCharacterQuery";
 import Character from "@/components/pages/character";
 
-const CONTENT: NextPage = () => {
+const CharactersList: React.FC = () => {
     const [page, setPage] = useQueryState("page", { shallow: false });
     const [status] = useQueryState("status", { shallow: false });
     const [gender] = useQueryState("gender", { shallow: false });
@@ -49,6 +46,14 @@ const CONTENT: NextPage = () => {
             />
         </div>
     );
-}
+};
+
+const CONTENT: NextPage = () => {
+    return (
+        <Suspense fallback={null}>
+            <CharactersList />
+        </Suspense>
+    );
+};
 
 export default CONTENT;
