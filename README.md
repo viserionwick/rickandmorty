@@ -1,6 +1,6 @@
 ## 🐉 Rick and Morty
 
-...
+A modern NextJS 15 (App Router) application for browsing **Rick and Morty** characters, featuring efficient data fetching with **TanStack Query**, dynamic filtering, and seamless URL state management with **nuqs**.
 
 **🌐 [Live Demo](https://rickandmorty-iota-two.vercel.app)**
 
@@ -8,7 +8,7 @@
 
 This project was built using these technologies:
 
-- **Next.js** (with app folder routing)
+- **NextJS 15** (with app folder routing)
 - **TypeScript** (for type safe development)
 - **TanStack/Query** (for queries)
 - **Shadcn** (for custom components)
