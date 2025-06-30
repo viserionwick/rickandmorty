@@ -5,7 +5,7 @@ import { NextPage } from "next";
 
 const CONTENT: NextPage = () => {
     return (
-        <div className="p-Home">
+        <div>
             Welcome
         </div>
     )
