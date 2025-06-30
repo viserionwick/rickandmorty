@@ -31,15 +31,18 @@ const CONTENT: NextPage = () => {
     return (
         <div className="flex flex-col w-full max-w-6xl">
             <FilterBar />
-            {
-                data.results.map(character => (
-                    <Character
-                        key={character.id}
-                        character={character}
-                    />
-                ))
-            }
+            <div className="my-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                {
+                    data.results.map(character => (
+                        <Character
+                            key={character.id}
+                            character={character}
+                        />
+                    ))
+                }
+            </div>
             <Pagination
+                className="my-4"
                 currentPage={pageNumber}
                 totalPages={data.info.pages}
                 onPageChange={(newPage) => setPage(newPage === 1 ? null : String(newPage))}
