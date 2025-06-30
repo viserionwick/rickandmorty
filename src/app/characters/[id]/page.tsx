@@ -49,7 +49,7 @@ const CHARACTER = async ({ params }: { params: Promise<PageProps["params"]> }) =
     }
 
     return <CONTENT character={character} />;
-  } catch (error) {
+  } catch {
     redirect("/characters");
   }
 };

@@ -5,7 +5,7 @@ import Link from "next/link";
 import clsx from "clsx";
 
 // Models
-import { Character } from "@/models/character";
+import { Character as CharacterType } from "@/models/character";
 
 const statusColors = {
     Alive: "bg-green-500",
@@ -15,7 +15,7 @@ const statusColors = {
 
 interface PROPS {
     className?: string;
-    character: Character;
+    character: CharacterType;
 }
 
 const Character: React.FC<PROPS> = ({
