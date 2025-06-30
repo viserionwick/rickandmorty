@@ -1,6 +1,7 @@
 "use client";
 
 // Essentials
+import Link from "next/link";
 import clsx from "clsx";
 
 // Models
@@ -22,12 +23,13 @@ const Character: React.FC<PROPS> = ({
     character
 }) => {
     return (
-        <div
+        <Link
             className={clsx(
                 "bg-white dark:bg-zinc-900 rounded-lg shadow-md overflow-hidden flex flex-col",
                 "hover:shadow-lg transition-shadow duration-300",
                 className
             )}
+            href={"/characters/" + character.id}
         >
             <img
                 src={character.image}
@@ -66,7 +68,7 @@ const Character: React.FC<PROPS> = ({
                     <strong>Origin:</strong> {character.origin.name}
                 </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

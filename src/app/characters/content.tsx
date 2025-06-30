@@ -9,7 +9,7 @@ import FilterBar from "@/components/pages/filterBar";
 import Pagination from "@/components/pages/pagination";
 
 // Lib
-import { useCharactersQuery } from "@/lib/api/useCharacterQuery";
+import { useCharactersQuery } from "@/hooks/useCharacterQuery";
 import Character from "@/components/pages/character";
 
 const CONTENT: NextPage = () => {
