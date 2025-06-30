@@ -32,14 +32,16 @@ const Character: React.FC<PROPS> = ({
             )}
             href={"/characters/" + character.id}
         >
-            <Image
-                src={character.image}
-                alt={character.name}
-                fill
-                style={{ objectFit: "cover" }}
-                sizes="(max-width: 768px) 100vw, 25vw"
-                priority={false}
-            />
+            <div className="relative w-full h-48">
+                <Image
+                    src={character.image}
+                    alt={character.name}
+                    fill
+                    style={{ objectFit: "cover" }}
+                    sizes="(max-width: 768px) 100vw, 25vw"
+                    priority={false}
+                />
+            </div>
 
             <div className="p-4 flex flex-col flex-grow">
                 <h3 className="text-lg font-semibold text-foreground mb-1">
