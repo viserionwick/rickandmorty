@@ -167,7 +167,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 For dynamic pages, data can be fetched directly within `generateMetadata` to create page-specific SEO content. This is demonstrated in the character details page, where an API call is made to retrieve the character's name for the page title.
 
-**Example: `/src/app/characters/page.tsx`**
 ```ts
 export async function generateMetadata({ params }: { params: Promise<PageProps["params"]> }): Promise<Metadata> {
   try {
