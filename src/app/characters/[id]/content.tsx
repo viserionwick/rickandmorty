@@ -1,86 +1,84 @@
 "use client";
 
 // Essentials
-import Link from "next/link";
+import { NextPage } from "next";
 import Image from "next/image";
-import clsx from "clsx";
 
 // Models
-import { Character as CharacterType } from "@/models/character";
-
-const statusColors = {
-    Alive: "bg-green-500",
-    Dead: "bg-red-500",
-    unknown: "bg-gray-400",
-};
+import { Character } from "@/models/character";
 
 interface PROPS {
-    className?: string;
-    character: CharacterType;
+    character: Character;
 }
 
-const Character: React.FC<PROPS> = ({
-    className,
-    character
-}) => {
+const CONTENT: NextPage<PROPS> = ({ character }) => {
     return (
-        <Link
-            className={clsx(
-                "bg-white dark:bg-zinc-900 rounded-lg shadow-md overflow-hidden flex flex-col",
-                "hover:shadow-lg transition-shadow duration-300",
-                className
-            )}
-            href={"/characters/" + character.id}
-        >
-            <div className="relative w-full h-48">
-                <Image
-                    src={character.image}
-                    alt={character.name}
-                    fill
-                    style={{ objectFit: "cover" }}
-                    sizes="(max-width: 768px) 100vw, 25vw"
-                    priority={false}
-                />
-            </div>
+        <div className="max-w-5xl w-full mx-auto p-8">
+            <h1 className="text-4xl font-bold mb-6">{character.name}</h1>
 
-            <div className="p-4 flex flex-col flex-grow">
-                <h3 className="text-lg font-semibold text-foreground mb-1">
-                    {character.name}
-                </h3>
-
-                <div className="flex items-center gap-2 mb-2">
-                    <span
-                        className={clsx(
-                            "inline-block w-3 h-3 rounded-full",
-                            statusColors[character.status]
-                        )}
-                        title={character.status}
+            <section className="flex flex-col md:flex-row gap-10">
+                <div className="relative w-full max-w-sm aspect-[1/1] rounded-lg shadow-lg overflow-hidden">
+                    <Image
+                        src={character.image}
+                        alt={character.name}
+                        fill
+                        style={{ objectFit: "cover" }}
+                        sizes="(max-width: 768px) 100vw, 25vw"
+                        priority={true}
                     />
-                    <span className="text-sm text-muted-foreground">
-                        {character.status} - {character.species}
-                    </span>
                 </div>
 
-                <div className="text-sm text-muted-foreground mb-1">
-                    <strong>Gender:</strong> {character.gender}
-                </div>
+                <div className="flex flex-col justify-start space-y-4 text-lg">
+                    <div>
+                        <span className="font-semibold">Status: </span>
+                        <span
+                            className={
+                                character.status === "Alive"
+                                    ? "text-green-600"
+                                    : character.status === "Dead"
+                                        ? "text-red-600"
+                                        : "text-gray-500"
+                            }
+                        >
+                            {character.status}
+                        </span>
+                    </div>
 
-                <div
-                    className="text-sm text-muted-foreground mb-1 truncate"
-                    title={character.location.name}
-                >
-                    <strong>Location:</strong> {character.location.name}
-                </div>
+                    <div>
+                        <span className="font-semibold">Species: </span>
+                        {character.species}
+                    </div>
 
-                <div
-                    className="text-sm text-muted-foreground truncate"
-                    title={character.origin.name}
-                >
-                    <strong>Origin:</strong> {character.origin.name}
+                    {character.type && (
+                        <div>
+                            <span className="font-semibold">Type: </span>
+                            {character.type}
+                        </div>
+                    )}
+
+                    <div>
+                        <span className="font-semibold">Gender: </span>
+                        {character.gender}
+                    </div>
+
+                    <div>
+                        <span className="font-semibold">Origin: </span>
+                        {character.origin.name}
+                    </div>
+
+                    <div>
+                        <span className="font-semibold">Last Known Location: </span>
+                        {character.location.name}
+                    </div>
+
+                    <div>
+                        <span className="font-semibold">Episodes Appeared: </span>
+                        {character.episode.length}
+                    </div>
                 </div>
-            </div>
-        </Link>
+            </section>
+        </div>
     );
 };
 
-export default Character;
+export default CONTENT;
