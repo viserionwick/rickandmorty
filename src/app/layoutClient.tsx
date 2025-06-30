@@ -9,7 +9,7 @@ interface PROPS {
     children: ReactNode;
 }
 
-const ClientLayout: React.FC<PROPS> = ({ children }) => {
+const LayoutClient: React.FC<PROPS> = ({ children }) => {
     const [queryClient] = useState(() => new QueryClient());
 
     return (
@@ -21,4 +21,4 @@ const ClientLayout: React.FC<PROPS> = ({ children }) => {
     );
 }
 
-export default ClientLayout;
+export default LayoutClient;

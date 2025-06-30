@@ -1,5 +1,5 @@
 // Components
-import ClientLayout from "./clientLayout";
+import LayoutClient from "./layoutClient";
 
 // Styles
 import "./globals.css";
@@ -25,9 +25,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <ClientLayout>
+        <LayoutClient>
           {children}
-        </ClientLayout>
+        </LayoutClient>
       </body>
     </html>
   );
