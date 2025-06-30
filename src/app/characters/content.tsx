@@ -10,6 +10,7 @@ import Pagination from "@/components/pages/pagination";
 
 // Lib
 import { useCharactersQuery } from "@/lib/api/useCharacterQuery";
+import Character from "@/components/pages/character";
 
 const CONTENT: NextPage = () => {
     const [page, setPage] = useQueryState("page", { shallow: false });
@@ -28,11 +29,16 @@ const CONTENT: NextPage = () => {
     if (error || !data) return <div>Error loading characters.</div>;
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 p-4">
+        <div className="flex flex-col w-full max-w-6xl">
             <FilterBar />
-            {data.results.map((char) => (
-                <div key={char.id}>{char.id} | </div>
-            ))}
+            {
+                data.results.map(character => (
+                    <Character
+                        key={character.id}
+                        character={character}
+                    />
+                ))
+            }
             <Pagination
                 currentPage={pageNumber}
                 totalPages={data.info.pages}

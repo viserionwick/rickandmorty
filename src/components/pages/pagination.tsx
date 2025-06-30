@@ -1,17 +1,26 @@
 "use client";
 
+// Essentials
+import clsx from "clsx";
+
 // Components
 import { Button } from "@/components/ui/button";
 
-interface Props {
+interface PROPS {
+  className?: string;
   currentPage: number;
   totalPages: number;
   onPageChange: (page: number) => void;
 }
 
-const Pagination = ({ currentPage, totalPages, onPageChange }: Props) => {
+const Pagination: React.FC<PROPS> = ({
+  className,
+  currentPage,
+  totalPages,
+  onPageChange
+}) => {
   return (
-    <div className="flex items-center justify-center gap-2">
+    <div className={clsx("flex items-center justify-center gap-2", className)}>
       <Button
         variant="outline"
         onClick={() => onPageChange(currentPage - 1)}
